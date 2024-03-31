@@ -21,3 +21,7 @@ button{
 .board-row{
   display: flex;
 }
+
+.status{
+  color: purple;
+}
