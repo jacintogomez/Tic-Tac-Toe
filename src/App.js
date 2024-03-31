@@ -3,18 +3,18 @@ import './index.css'
 import {useState} from 'react';
 
 function Square({value,clicktile}){
-    return <button className="square" onClick={clicktile}>{value}</button>;
+    return <button className="square" onClick={clicktile}>
+        {value}
+    </button>;
 }
 
-export default function Board(){
-    const [squares,setsq]=useState(Array(9).fill(null));
-    const [xup,setxup]=useState(true);
+function Board({xup,squares,onplay}){
     function tileclick(i){
-        if(squares[i]||win(squares)){return;}
+        if(win(squares)||squares[i]){return;}
         const nextsquares=squares.slice();
         (xup)?nextsquares[i]="X":nextsquares[i]="O";
-        setsq(nextsquares);
-        setxup(!xup);
+        onplay(nextsquares);
+        console.log('xup is '+xup);
     }
     const winner=win(squares);
     let status;
@@ -39,6 +39,41 @@ export default function Board(){
                 <Square value={squares[8]} clicktile={()=>tileclick(8)} />
             </div>
         </>
+    );
+}
+
+export default function Game(){
+    const [xup,setxup]=useState(true);
+    const [hist,sethist]=useState([Array(9).fill(null)]);
+    const currentsq=hist[hist.length-1];
+    const [curmov,setcurmov]=useState(0);
+    function handleplay(nextsquares){
+        sethist([...hist,nextsquares]);
+        setxup(!xup);
+    }
+    function jumpto(nxmove){
+        setcurmov(nxmove);
+        setxup(nxmove%2===0);
+    }
+    const moves=hist.map((squares,move)=>{
+        let description;
+        if(move>0){description='Go to move #'+move;}
+        else{description='Go to game start';}
+        return(
+            <li key={move}>
+                <button onClick={()=>jumpto(move)}>{description}</button>
+            </li>
+        );
+    });
+    return(
+        <div className="game">
+            <div className="game-board">
+                <Board xup={xup} squares={currentsq} onplay={handleplay} />
+            </div>
+            <div className="game-info">
+                <ol>{moves}</ol>
+            </div>
+        </div>
     );
 }
 
