@@ -67,19 +67,23 @@ export default function Game(){
     });
     return(
         <div className="game">
-            <div className="game-board">
-                <Board xup={xup} squares={currentsq} onplay={handleplay} />
+            <div className="segment">
+                <div className="game-board">
+                    <Board xup={xup} squares={currentsq} onplay={handleplay}/>
+                </div>
             </div>
-            <div className="game-info">
-                <ol>{moves}</ol>
+            <div className="segment">
+                <div className="game-info">
+                    <ol>{moves}</ol>
+                </div>
             </div>
         </div>
     );
 }
 
-function win(squares){
-    const lines=[
-        [0,1,2],
+function win(squares) {
+    const lines = [
+        [0, 1,2],
         [3,4,5],
         [6,7,8],
         [0,3,6],
