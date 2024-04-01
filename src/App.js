@@ -43,17 +43,17 @@ function Board({xup,squares,onplay}){
 }
 
 export default function Game(){
-    const [xup,setxup]=useState(true);
     const [hist,sethist]=useState([Array(9).fill(null)]);
-    const currentsq=hist[hist.length-1];
     const [curmov,setcurmov]=useState(0);
+    const currentsq=hist[curmov];
+    const xup=curmov%2===0;
     function handleplay(nextsquares){
-        sethist([...hist,nextsquares]);
-        setxup(!xup);
+        const nexthist=[...hist.slice(0,curmov+1),nextsquares];
+        sethist(nexthist);
+        setcurmov(nexthist.length-1);
     }
     function jumpto(nxmove){
         setcurmov(nxmove);
-        setxup(nxmove%2===0);
     }
     const moves=hist.map((squares,move)=>{
         let description;
