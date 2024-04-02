@@ -1,47 +1,58 @@
 body{
-  margin: 0;
-  padding-top: 10%;
-  display: flex;
-  justify-content: center;
-  background-color: black;
+    margin: 0;
+    padding-top: 3%;
+    color: orange;
+    background-color: black;
 }
 
 button{
-  height: 100px;
-  width: 100px;
-  line-height: 50px;
-  background-color: orange;
+    height: 100px;
+    width: 100px;
+    line-height: 50px;
+    background-color: orange;
 }
 
 .game-info button{
-  height: 30px;
-  width: 150px;
-  border-radius: 10px;
-  line-height: 15px;
-  background-color: purple;
+    height: 30px;
+    width: 150px;
+    border-radius: 10px;
+    line-height: 15px;
+    background-color: purple;
 }
 
 .game{
-  display: flex;
-  flex: 1;
-}
-
-.segment{
-  flex: 1;
+    margin-top: 8%;
+    display: flex;
+    justify-content: center;
+    flex: 1;
 }
 
 .board-row{
-  display: flex;
+    display: flex;
 }
 
 .square{
-  font-size: 100px;
-  font-weight: bold;
+    font-size: 100px;
+    font-weight: bold;
 }
-.status{
-  font-size: 50px;
+
+#one{
+    border-top-left-radius: 25px;
+}
+#two{
+    border-top-right-radius: 25px;
+}
+#three{
+    border-bottom-left-radius: 25px;
+}
+#four{
+    border-bottom-right-radius: 25px;
 }
 
 .status{
-  color: purple;
+    font-size: 50px;
+}
+
+.status{
+    color: purple;
 }

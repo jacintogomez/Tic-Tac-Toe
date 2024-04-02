@@ -2,8 +2,8 @@
 import './index.css'
 import {useState} from 'react';
 
-function Square({value,clicktile}){
-    return <button className="square" onClick={clicktile}>
+function Square({id,value,clicktile}){
+    return <button id={id} className="square" onClick={clicktile}>
         {value}
     </button>;
 }
@@ -24,9 +24,9 @@ function Board({xup,squares,onplay}){
         <>
             <div className="status">{status}</div>
             <div className="board-row">
-                <Square value={squares[0]} clicktile={()=>tileclick(0)} />
+                <Square id="one" value={squares[0]} clicktile={()=>tileclick(0)} />
                 <Square value={squares[1]} clicktile={()=>tileclick(1)} />
-                <Square value={squares[2]} clicktile={()=>tileclick(2)} />
+                <Square id="two" value={squares[2]} clicktile={()=>tileclick(2)} />
             </div>
             <div className="board-row">
                 <Square value={squares[3]} clicktile={()=>tileclick(3)} />
@@ -34,9 +34,9 @@ function Board({xup,squares,onplay}){
                 <Square value={squares[5]} clicktile={()=>tileclick(5)} />
             </div>
             <div className="board-row">
-                <Square value={squares[6]} clicktile={()=>tileclick(6)} />
+                <Square id="three" value={squares[6]} clicktile={()=>tileclick(6)} />
                 <Square value={squares[7]} clicktile={()=>tileclick(7)} />
-                <Square value={squares[8]} clicktile={()=>tileclick(8)} />
+                <Square id="four" value={squares[8]} clicktile={()=>tileclick(8)} />
             </div>
         </>
     );
